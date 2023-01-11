@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from 'astro-icon';
+import Avatar from '../components/Avatar.astro';
+
+const contactMethods = [
+  {
+    name: 'Twitter',
+    href: 'https://twitter.com/alukebatchelor',
+    icon: 'twitter',
+  },
+  { name: 'Github', href: 'https://github.com/lukebatchelor/', icon: 'github' },
+  {
+    name: 'Linkdedin',
+    href: 'https://www.linkedin.com/in/luke-batchelor-8068b884/',
+    icon: 'linkedin',
+  },
+  {
+    name: '[last].[first]@gmail.com',
+    href: 'mailto:?subject=Contact',
+    icon: 'email',
+  },
+];
+---
+
+<Layout title="Contact">
+  <h1 class="text-2xl mb-4">Contact Me</h1>
+  <div class="flex mb-4">
+    <Avatar />
+    <div>
+      <p>Feel free to contact me for anything non-spam related!</p>
+    </div>
+  </div>
+  <div class="space-y-4 mx-auto">
+    {
+      contactMethods.map(({ name, href, icon }) => (
+        <div class="border border-black p-4 max-w-sm ">
+          <a href={href} class="flex items-center ">
+            <Icon name="hamburger-menu2" class="w-6 inline-block mr-4" />
+            {name}
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

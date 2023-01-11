@@ -1,0 +1,60 @@
+---
+import { Icon } from 'astro-icon';
+const navItems = [
+  { name: 'About', href: '/' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<nav
+  class="bg-slate-600 py-2 px-4 tracking-wide flex justify-center align-bottom"
+>
+  <div class="flex max-w-3xl justify-between w-full align-middle">
+    <div class="flex-1 text-2xl font-bold"><a href="/">Luke Batchelor</a></div>
+    <ul class="flex-0 items-end space-x-2 font-semibold hidden sm:flex">
+      {
+        navItems.map(({ name, href }) => (
+          <li>
+            <a href={href}>{name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="dropdown relative flex-0 sm:hidden">
+    <button type="button" aria-expanded="false" aria-controls="nav-dropdown">
+      <Icon name="hamburger-menu2" class="w-6 inline-block" />
+    </button>
+    <ul
+      class="dropdown-menu bg-gray-200 p-4 rounded-md absolute top-8 right-0 space-y-3 shadow-2xl"
+      id="nav-dropdown"
+    >
+      {
+        navItems.map(({ href, name }) => (
+          <li>
+            <a href={href}>{name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<style>
+  /* 
+     Adapted from Stepanie Eckles
+     https://moderncss.dev/css-only-accessible-dropdown-navigation-menu/
+   */
+  .dropdown-menu {
+    transform: rotateX(-90deg) translateX(-50%);
+    transform-origin: top center;
+    opacity: 0.3;
+    transition: 280ms all eas-out;
+  }
+  :is(.dropdown:hover, .dropdown:focus-within) .dropdown-menu {
+    opacity: 1;
+    transform: rotateX(0) translateX(0);
+  }
+</style>
