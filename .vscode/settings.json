@@ -11,5 +11,6 @@
     "strings": "on"
   },
   "editor.formatOnSave": true,
-  "prettier.documentSelectors": ["**/*.astro"]
+  "prettier.documentSelectors": ["**/*.astro"],
+  "autoimport.filesToScan": "**/*.{ts,tsx,astro}"
 }

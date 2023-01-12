@@ -1,5 +1,11 @@
+---
+export interface Props {
+  class?: string | undefined | null;
+}
+---
+
 <img
   src="/profile.jpg"
-  class="mx-auto rounded-full w-30"
+  class={`mx-auto rounded-full w-32 ${Astro.props.class}`}
   alt="Drawn image of Luke Batchelor by Ben Hasic"
 />

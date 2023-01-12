@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import Avatar from '../../components/Avatar.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Layout from '../../layouts/Layout.astro';
+
+const projects = await getCollection('projects');
+---
+
+<Layout title="Projects" width="wide">
+  <Avatar />
+  <h1>Projects</h1>
+  <div class="flex flex-wrap gap-4">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+  <!-- {projects.map((project) => <pre>{JSON.stringify(project, null, 2)}</pre>)} -->
+</Layout>

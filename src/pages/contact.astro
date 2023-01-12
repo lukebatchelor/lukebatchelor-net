@@ -24,17 +24,17 @@ const contactMethods = [
 ---
 
 <Layout title="Contact">
-  <h1 class="text-2xl mb-4">Contact Me</h1>
-  <div class="flex mb-4">
-    <Avatar />
-    <div>
+  <h1 class="text-2xl mb-8">Contact Me</h1>
+  <div class="flex mb-8 items-center max-w-md mx-auto">
+    <Avatar class="w-32 mx-auto" />
+    <div class="text-center center text-xl max-w-xs p-4">
       <p>Feel free to contact me for anything non-spam related!</p>
     </div>
   </div>
-  <div class="space-y-4 mx-auto">
+  <div class="space-y-4">
     {
       contactMethods.map(({ name, href, icon }) => (
-        <div class="border border-black p-4 max-w-sm ">
+        <div class="border border-black p-4 max-w-sm  mx-auto">
           <a href={href} class="flex items-center ">
             <Icon name="hamburger-menu2" class="w-6 inline-block mr-4" />
             {name}
