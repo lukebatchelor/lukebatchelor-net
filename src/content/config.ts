@@ -25,6 +25,7 @@ const blogs = defineCollection({
     date: z.string().transform((str) => new Date(str)),
     description: z.string(),
     thumbnail: z.string(),
+    thumbnailAlt: z.string(),
     previewUrl: z.string().url().optional(),
     githubUrl: z.string().url().optional(),
   },

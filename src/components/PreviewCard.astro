@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type {} from '../types';
+
+export interface Props {
+  thumbnailSrc: string;
+  thumbnailAlt: string;
+  href: string;
+  title: string;
+  description: string;
+}
+
+const { thumbnailSrc, thumbnailAlt, href, title, description } = Astro.props;
+---
+
+<div class="flex flex-col w-72 rounded-lg overflow-hidden bg-slate-600">
+  <img
+    src={thumbnailSrc}
+    alt={thumbnailAlt}
+    class="w-full aspect-square object-cover"
+  />
+  <div class="p-8">
+    <h3>
+      <a href={href}>{title}</a>
+    </h3>
+    <p>{description}</p>
+  </div>
+</div>

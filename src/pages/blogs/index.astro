@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Avatar from '../../components/Avatar.astro';
+import PreviewCard from '../../components/PreviewCard.astro';
+import Layout from '../../layouts/Layout.astro';
+
+const blogs = await getCollection('blogs');
+---
+
+<Layout title="Blogs" width="wide">
+  <Avatar />
+  <h1 class="text-center my-4 text-3xl">Blog Posts</h1>
+  <div class="flex flex-wrap gap-4 justify-center">
+    {
+      blogs.map((blog) => (
+        <PreviewCard
+          thumbnailSrc={`/blogs/${blog.slug}/${blog.data.thumbnail}`}
+          thumbnailAlt={blog.data.thumbnailAlt}
+          href={`/blogs/${blog.slug}`}
+          title={blog.data.title}
+          description={blog.data.description}
+        />
+      ))
+    }
+  </div>
+  <!-- {projects.map((project) => <pre>{JSON.stringify(project, null, 2)}</pre>)} -->
+</Layout>

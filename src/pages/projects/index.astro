@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Avatar from '../../components/Avatar.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
+import PreviewCard from '../../components/PreviewCard.astro';
 import Layout from '../../layouts/Layout.astro';
 
 const projects = await getCollection('projects');
@@ -9,9 +9,24 @@ const projects = await getCollection('projects');
 
 <Layout title="Projects" width="wide">
   <Avatar />
-  <h1>Projects</h1>
-  <div class="flex flex-wrap gap-4">
-    {projects.map((project) => <ProjectCard project={project} />)}
+  <h1 class="text-center my-4 text-3xl">Projects</h1>
+  <div class="flex flex-wrap gap-4 justify-center">
+    {
+      projects.map((project) => (
+        <PreviewCard
+          thumbnailSrc={`/projects/${project.slug}/${project.data.thumbnail}`}
+          thumbnailAlt={project.data.thumbnailAlt}
+          href={
+            project.data.blogUrl ||
+            project.data.previewUrl ||
+            project.data.githubUrl ||
+            '#'
+          }
+          title={project.data.title}
+          description={project.data.description}
+        />
+      ))
+    }
   </div>
   <!-- {projects.map((project) => <pre>{JSON.stringify(project, null, 2)}</pre>)} -->
 </Layout>
