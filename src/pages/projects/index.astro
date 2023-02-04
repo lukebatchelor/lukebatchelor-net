@@ -1,30 +1,55 @@
 ---
-import { getCollection } from 'astro:content';
+import { CollectionEntry, getCollection } from 'astro:content';
 import Avatar from '../../components/Avatar.astro';
 import PreviewCard from '../../components/PreviewCard.astro';
 import Layout from '../../layouts/Layout.astro';
 
 const projects = await getCollection('projects');
+const sortedProjects = projects.sort(
+  (a, b) => Number(b.data.date) - Number(a.data.date)
+);
+type ProjectsByYear = Record<number, Array<CollectionEntry<'projects'>>>;
+const projectsByYear = sortedProjects.reduce<ProjectsByYear>(
+  (projectsByYear, project) => {
+    const year = project.data.date.getFullYear();
+    if (!projectsByYear.hasOwnProperty(year)) {
+      projectsByYear[year] = [];
+    }
+    projectsByYear[year].push(project);
+    return projectsByYear;
+  },
+  {}
+);
+const projectEntries = Object.entries(projectsByYear).sort(
+  (a, b) => Number(b[0]) - Number(a[0])
+);
 ---
 
 <Layout title="Projects" width="wide">
   <Avatar />
   <h1 class="text-center my-4 text-3xl">Projects</h1>
-  <div class="flex flex-wrap gap-4 justify-center">
+  <div>
     {
-      projects.map((project) => (
-        <PreviewCard
-          thumbnailSrc={`/projects/${project.slug}/${project.data.thumbnail}`}
-          thumbnailAlt={project.data.thumbnailAlt}
-          href={
-            project.data.blogUrl ||
-            project.data.previewUrl ||
-            project.data.githubUrl ||
-            '#'
-          }
-          title={project.data.title}
-          description={project.data.description}
-        />
+      projectEntries.map(([year, projects]) => (
+        <div>
+          <p class="font-bold my-8 text-2xl">{year}</p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            {projects.map((project) => (
+              <PreviewCard
+                thumbnailSrc={`/projects/${project.slug}/${project.data.thumbnail}`}
+                thumbnailAlt={project.data.thumbnailAlt}
+                href={
+                  project.data.blogUrl ||
+                  project.data.previewUrl ||
+                  project.data.githubUrl ||
+                  '#'
+                }
+                title={project.data.title}
+                description={project.data.description}
+              />
+            ))}
+          </div>
+        </div>
       ))
     }
   </div>
