@@ -52,6 +52,27 @@ declare module 'astro:content' {
 },
 },
 "projects": {
+"2017-07-31-bolt.mdx": {
+  id: "2017-07-31-bolt.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2017-11-24-landkid.mdx": {
+  id: "2017-11-24-landkid.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2018-08-10-hvac-legend-generator-poc.mdx": {
+  id: "2018-08-10-hvac-legend-generator-poc.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
 "2018-08-20-css-binary-decoder.mdx": {
   id: "2018-08-20-css-binary-decoder.mdx",
   slug: string,
@@ -101,8 +122,50 @@ declare module 'astro:content' {
   collection: "projects",
   data: InferEntrySchema<"projects">
 },
+"2019-09-07-disappearing-homer-gif-generator.mdx": {
+  id: "2019-09-07-disappearing-homer-gif-generator.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2019-10-09-curling-game.mdx": {
+  id: "2019-10-09-curling-game.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2019-12-14-spritesheet-tools.mdx": {
+  id: "2019-12-14-spritesheet-tools.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
 "2020-02-23-unity-match-3-game-jam.mdx": {
   id: "2020-02-23-unity-match-3-game-jam.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2020-03-14-generozity-donation-platform.mdx": {
+  id: "2020-03-14-generozity-donation-platform.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2020-03-27-startups-game.mdx": {
+  id: "2020-03-27-startups-game.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2020-05-02-coup-game.mdx": {
+  id: "2020-05-02-coup-game.mdx",
   slug: string,
   body: string,
   collection: "projects",
@@ -115,8 +178,113 @@ declare module 'astro:content' {
   collection: "projects",
   data: InferEntrySchema<"projects">
 },
+"2020-10-31-gday-chat.mdx": {
+  id: "2020-10-31-gday-chat.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-03-13-mass-haul-data-parser.mdx": {
+  id: "2021-03-13-mass-haul-data-parser.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-03-21-12d-report-to-pdf-generator.mdx": {
+  id: "2021-03-21-12d-report-to-pdf-generator.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-06-26-build-a-book.mdx": {
+  id: "2021-06-26-build-a-book.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-06-26-webp-to-png-converter.mdx": {
+  id: "2021-06-26-webp-to-png-converter.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-07-06-vid-keeper.mdx": {
+  id: "2021-07-06-vid-keeper.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-07-10-hotmilo23-archive.mdx": {
+  id: "2021-07-10-hotmilo23-archive.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-07-11-paste-app.mdx": {
+  id: "2021-07-11-paste-app.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-07-18-skip-app.mdx": {
+  id: "2021-07-18-skip-app.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2021-10-15-decider-app.mdx": {
+  id: "2021-10-15-decider-app.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2022-12-03-engagement-album.mdx": {
+  id: "2022-12-03-engagement-album.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2022-12-17-up-brett.mdx": {
+  id: "2022-12-17-up-brett.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2022-12-28-pace-calculator.mdx": {
+  id: "2022-12-28-pace-calculator.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2022-12-29-beer-calorie-calculator.mdx": {
+  id: "2022-12-29-beer-calorie-calculator.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
 "2023-01-03-emoji-mosaic-creator.mdx": {
   id: "2023-01-03-emoji-mosaic-creator.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2023-01-07-url-snake.mdx": {
+  id: "2023-01-07-url-snake.mdx",
   slug: string,
   body: string,
   collection: "projects",
