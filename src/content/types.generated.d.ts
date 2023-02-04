@@ -101,6 +101,27 @@ declare module 'astro:content' {
   collection: "projects",
   data: InferEntrySchema<"projects">
 },
+"2020-02-23-unity-match-3-game-jam.mdx": {
+  id: "2020-02-23-unity-match-3-game-jam.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2020-08-22-circlez.mdx": {
+  id: "2020-08-22-circlez.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
+"2023-01-03-emoji-mosaic-creator.mdx": {
+  id: "2023-01-03-emoji-mosaic-creator.mdx",
+  slug: string,
+  body: string,
+  collection: "projects",
+  data: InferEntrySchema<"projects">
+},
 },
 
 	};

@@ -8,9 +8,9 @@ const projects = defineCollection({
     thumbnail: z.string(),
     thumbnailAlt: z.string(),
     tags: z.array(z.string()),
-    previewUrl: z.string().url().optional(),
-    githubUrl: z.string().url().optional(),
-    blogUrl: z.string().url().optional(),
+    previewUrl: z.string().optional(),
+    githubUrl: z.string().optional(),
+    blogUrl: z.string().optional(),
   },
   slug: ({ id, defaultSlug, data, body }) => {
     const match = defaultSlug.match(/\d{4}-\d\d-\d\d-(.+?)$/);
