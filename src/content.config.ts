@@ -4,7 +4,7 @@ import { glob } from 'astro/loaders';
 
 const projects = defineCollection({
   loader: glob({
-    pattern: '**/index.mdx',
+    pattern: '**/*.mdx',
     base: './src/content/projects',
     generateId: ({ entry }) =>
       entry.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\/index\.mdx$/, ''),

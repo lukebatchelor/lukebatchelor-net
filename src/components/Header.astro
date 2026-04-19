@@ -11,7 +11,7 @@ const isActive = (href: string) => href === '/' ? currentPath === href : current
 
 <header class="border-b border-border">
   <nav class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="text-text font-semibold text-lg no-underline hover:text-accent transition-colors">
+    <a href="/" id="site-title" class="text-text font-semibold text-lg no-underline hover:text-accent transition-colors">
       lukebatchelor.net
     </a>
     <ul class="flex gap-6 list-none m-0 p-0">
@@ -33,3 +33,9 @@ const isActive = (href: string) => href === '/' ? currentPath === href : current
     </ul>
   </nav>
 </header>
+
+<script>
+  if (window.location.hostname === 'lbatch.com') {
+    document.getElementById('site-title')!.textContent = 'lbatch.com';
+  }
+</script>

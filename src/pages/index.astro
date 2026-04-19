@@ -3,31 +3,67 @@ import Layout from '../components/Layout.astro';
 import Avatar from '../components/Avatar.astro';
 ---
 
-<Layout title="Luke Batchelor — Developer">
-  <div class="space-y-6 max-w-xl">
+<Layout title="Luke Batchelor - Developer">
+  <div class="space-y-8 max-w-xl">
     <Avatar />
 
     <div class="space-y-3">
       <p class="text-3xl font-semibold">G'day!</p>
       <p class="text-text-muted">
-        I'm Luke, a fullstack dev with a passion for building things.
+        I'm Luke - a Perth-based Senior Fullstack Engineer with a decade of experience building
+        things at every scale.
       </p>
+    </div>
+
+    <div class="space-y-4">
+      <p class="font-semibold text-xl">Work</p>
+      <p class="text-text-muted">
+        Most of my career has been at Atlassian, where I helped found and scale the Frontend
+        Monorepo from a single design system into a behemoth of a monorepo powering dozens of apps (including Jira and Confluence) and thousands of frontend packages. A few things
+        I'm proud of:
+      </p>
+      <ul class="space-y-3 text-text-muted list-disc pl-5">
+        <li>
+          <span class="font-medium text-text">Changesets</span> - original author of the early
+          versions, now open-sourced and used across hundreds of open source projects
+        </li>
+        <li>
+          <span class="font-medium text-text">Landkid</span> - original co-author of Atlassian's
+          frontend merge queue, a vital tool in preventing semantic conflicts in a repo that merges 200+ PRs a day
+        </li>
+        <li>
+          <span class="font-medium text-text">DX & CI/CD at scale</span> - built and maintained hundreds of pipelines for the building, testing, type-checking and deployment of thousands of frontend packages.
+        </li>
+      </ul>
     </div>
 
     <div class="space-y-3">
-      <p class="font-semibold text-xl">My world</p>
+      <p class="font-semibold text-xl">Home</p>
       <p class="text-text-muted">
-        At work I do frontends, backends, APIs, build tooling, monorepos, CI/CD,
-        design systems, system design, developer and user experience.
+        I'm one of the lucky people who gets to do their passion as a job and then comes home and
+        keeps doing it.
       </p>
       <p class="text-text-muted">
-        At home I like making micro apps that either solve tiny problems for me
-        or scratch silly, intellectual itches — PWAs, micro-apps, CSS
-        challenges and mini games.
+        On weekends I'm almost always building something; from small games, micro-apps, PWA's, tools, etc to full stack applications and automations for my home, events, fundraisers, comedy shows, small business backends, etc  
+      </p>
+      <p class="text-text-muted">A couple I'm most proud of:
+        <ul class="space-y-3 text-text-muted list-disc pl-5">
+        <li>
+          <span class="font-medium text-text">Generozity</span> - A platform my brother and I built for the Generozity group to raise money for charity (so far, more than $800,000!). It includes a donation portal, an admin interface and a live OBS overlay for use during livestreams.
+        </li>
+        <li>
+          <span class="font-medium text-text">Rap GPT</span> - A platform for building and running crowd + LLM powered Freestyle Rap games for the amazing Macshane. It's been presented at dozens of packed out shows from Perth WA, to Edinborough Fringe!
+        </li>
+      </ul>
+      </p>
+      <p class="text-text-muted">
+        Other times though, I just love coding for the sake of it, working with creative constraints just to see if something is possible. This has lead to some odd projects like: pure CSS apps (a binary decoder, a rhythm game, a tic tac toe AI and even a "mind reading app" 😂), a code golfed game of Snake
+        encoded entirely in a URL and even a palindromic, symmetric tattoo in a profanely named esoteric programming
+        language.
       </p>
     </div>
 
-    <a href="/projects" class="text-accent hover:underline text-sm">
+    <a href="/projects" class="text-accent hover:underline text-sm inline-block">
       View my projects →
     </a>
   </div>
