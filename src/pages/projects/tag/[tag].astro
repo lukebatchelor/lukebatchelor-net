@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../components/Layout.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import TagNav from '../../../components/TagNav.astro';
+
+export async function getStaticPaths() {
+  const allProjects = await getCollection('projects');
+  const allTags = [...new Set(allProjects.flatMap(p => p.data.tags))];
+
+  allTags.sort();
+
+  return allTags.map(tag => ({
+    params: { tag },
+    props: {
+      projects: allProjects
+        .filter(p => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+      allTags,
+    },
+  }));
+}
+
+const { tag } = Astro.params;
+const { projects, allTags } = Astro.props;
+---
+
+<Layout title={`${tag} projects — Luke Batchelor`}>
+  <div class="space-y-8">
+    <div class="space-y-4">
+      <h1 class="text-3xl font-semibold">Projects</h1>
+      <TagNav tags={allTags} activeTag={tag} />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {projects.map(project => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          thumbnail={project.data.thumbnail}
+          thumbnailAlt={project.data.thumbnailAlt}
+          tags={project.data.tags}
+          previewUrl={project.data.previewUrl}
+          githubUrl={project.data.githubUrl}
+          blogUrl={project.data.blogUrl}
+        />
+      ))}
+    </div>
+  </div>
+</Layout>

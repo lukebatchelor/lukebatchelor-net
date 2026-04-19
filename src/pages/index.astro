@@ -1,24 +1,34 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../components/Layout.astro';
 import Avatar from '../components/Avatar.astro';
 ---
 
-<Layout title="Luke Batchelor. Developer">
-  <main class="space-y-3">
-    <Avatar class="w-36" />
-    <p class="text-3xl font-semibold">G'day!</p>
-    <p>I'm Luke, a fullstack dev with a passion for building things</p>
-    <p class="font-semibold text-xl">My world</p>
-    <p>
-      At work I do frontends, backends, api's, build tooling, monorepo's, CI/CD,
-      design systems, system design, developer and user experience
-    </p>
-    <p>
-      At home I like making micro app's that either solve tiny problems for me
-      or ones that scratch silly, intellectual itches. PWA's, micro-apps, css
-      challenges and mini games
-    </p>
-  </main>
-</Layout>
+<Layout title="Luke Batchelor — Developer">
+  <div class="space-y-6 max-w-xl">
+    <Avatar />
 
-<style></style>
+    <div class="space-y-3">
+      <p class="text-3xl font-semibold">G'day!</p>
+      <p class="text-text-muted">
+        I'm Luke, a fullstack dev with a passion for building things.
+      </p>
+    </div>
+
+    <div class="space-y-3">
+      <p class="font-semibold text-xl">My world</p>
+      <p class="text-text-muted">
+        At work I do frontends, backends, APIs, build tooling, monorepos, CI/CD,
+        design systems, system design, developer and user experience.
+      </p>
+      <p class="text-text-muted">
+        At home I like making micro apps that either solve tiny problems for me
+        or scratch silly, intellectual itches — PWAs, micro-apps, CSS
+        challenges and mini games.
+      </p>
+    </div>
+
+    <a href="/projects" class="text-accent hover:underline text-sm">
+      View my projects →
+    </a>
+  </div>
+</Layout>

@@ -1,0 +1,27 @@
+---
+import githubSvg from '../icons/github.svg?raw';
+import linkedinSvg from '../icons/linkedin.svg?raw';
+import twitterSvg from '../icons/twitter.svg?raw';
+import emailSvg from '../icons/email.svg?raw';
+
+const links = [
+  { name: 'GitHub',                    href: 'https://github.com/lukebatchelor/',                         svg: githubSvg },
+  { name: 'LinkedIn',                  href: 'https://www.linkedin.com/in/luke-batchelor-8068b884/',      svg: linkedinSvg },
+  { name: 'Twitter / X',              href: 'https://twitter.com/alukebatchelor',                         svg: twitterSvg },
+  { name: '[last].[first]@gmail.com', href: 'mailto:?subject=Contact',                                    svg: emailSvg },
+];
+---
+
+<ul class="space-y-3 list-none p-0">
+  {links.map(({ name, href, svg }) => (
+    <li>
+      <a
+        href={href}
+        class="flex items-center gap-4 p-4 rounded-lg border border-border bg-surface hover:bg-surface-2 text-text no-underline transition-colors group"
+      >
+        <span class="w-6 h-6 shrink-0 text-text-muted group-hover:text-accent transition-colors" set:html={svg} />
+        <span>{name}</span>
+      </a>
+    </li>
+  ))}
+</ul>

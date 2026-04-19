@@ -1,11 +1,13 @@
 ---
-export interface Props {
-  class?: string | undefined | null;
-}
+import { Image } from 'astro:assets';
+import profileImg from '../../public/profile.jpg';
 ---
 
-<img
-  src="/profile.jpg"
-  class={`mx-auto rounded-full w-32 ${Astro.props.class}`}
+<Image
+  src={profileImg}
   alt="Drawn image of Luke Batchelor by Ben Hasic"
+  width={144}
+  height={144}
+  class="rounded-full"
+  loading="eager"
 />

@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    background-image: radial-gradient(ellipse at 50% 0%, var(--color-surface) 0%, var(--color-bg) 70%);
+    background-attachment: fixed;
+    color: var(--color-text);
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  a {
+    color: var(--color-accent);
+  }
+
+  a:hover {
+    color: var(--color-text);
+  }
+}

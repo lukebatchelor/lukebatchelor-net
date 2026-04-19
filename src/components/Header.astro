@@ -1,60 +1,35 @@
 ---
-import { Icon } from 'astro-icon';
-const navItems = [
-  { name: 'About', href: '/' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Blog', href: '/blogs' },
-  { name: 'Contact', href: '/contact' },
+const nav = [
+  { href: '/', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
 ];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => href === '/' ? currentPath === href : currentPath.startsWith(href);
 ---
 
-<nav
-  class="bg-slate-600 py-2 px-4 tracking-wide flex justify-center align-bottom"
->
-  <div class="flex max-w-3xl justify-between w-full align-middle">
-    <div class="flex-1 text-2xl font-bold"><a href="/">Luke Batchelor</a></div>
-    <ul class="flex-0 items-end space-x-2 font-semibold hidden sm:flex">
-      {
-        navItems.map(({ name, href }) => (
-          <li>
-            <a href={href}>{name}</a>
-          </li>
-        ))
-      }
+<header class="border-b border-border">
+  <nav class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="text-text font-semibold text-lg no-underline hover:text-accent transition-colors">
+      lukebatchelor.net
+    </a>
+    <ul class="flex gap-6 list-none m-0 p-0">
+      {nav.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'text-sm no-underline transition-colors',
+              isActive(href)
+                ? 'text-accent'
+                : 'text-text-muted hover:text-text',
+            ]}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
     </ul>
-  </div>
-  <div class="dropdown relative flex-0 sm:hidden">
-    <button type="button" aria-expanded="false" aria-controls="nav-dropdown">
-      <Icon name="hamburger-menu2" class="w-6 inline-block" />
-    </button>
-    <ul
-      class="dropdown-menu bg-gray-200 p-4 rounded-md absolute top-8 right-0 space-y-3 shadow-2xl"
-      id="nav-dropdown"
-    >
-      {
-        navItems.map(({ href, name }) => (
-          <li>
-            <a href={href}>{name}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</nav>
-
-<style>
-  /* 
-     Adapted from Stepanie Eckles
-     https://moderncss.dev/css-only-accessible-dropdown-navigation-menu/
-   */
-  .dropdown-menu {
-    transform: rotateX(-90deg) translateX(-50%);
-    transform-origin: top center;
-    opacity: 0.3;
-    transition: 280ms all eas-out;
-  }
-  :is(.dropdown:hover, .dropdown:focus-within) .dropdown-menu {
-    opacity: 1;
-    transform: rotateX(0) translateX(0);
-  }
-</style>
+  </nav>
+</header>

@@ -1,57 +1,84 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
-import Avatar from '../../components/Avatar.astro';
-import PreviewCard from '../../components/PreviewCard.astro';
-import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Layout from '../../components/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import TagNav from '../../components/TagNav.astro';
 
-const projects = await getCollection('projects');
-const sortedProjects = projects.sort(
-  (a, b) => Number(b.data.date) - Number(a.data.date)
-);
-type ProjectsByYear = Record<number, Array<CollectionEntry<'projects'>>>;
-const projectsByYear = sortedProjects.reduce<ProjectsByYear>(
-  (projectsByYear, project) => {
-    const year = project.data.date.getFullYear();
-    if (!projectsByYear.hasOwnProperty(year)) {
-      projectsByYear[year] = [];
-    }
-    projectsByYear[year].push(project);
-    return projectsByYear;
-  },
-  {}
-);
-const projectEntries = Object.entries(projectsByYear).sort(
-  (a, b) => Number(b[0]) - Number(a[0])
-);
+const allProjects = await getCollection('projects');
+const sorted = allProjects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const allTags = [...new Set(allProjects.flatMap(p => p.data.tags))].sort();
+
+const byYear = sorted.reduce((acc, p) => {
+  const year = p.data.date.getFullYear();
+  (acc[year] ??= []).push(p);
+  return acc;
+}, {} as Record<number, typeof sorted>);
+
+const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
 ---
 
-<Layout title="Projects" width="wide">
-  <Avatar />
-  <h1 class="text-center my-4 text-3xl">Projects</h1>
-  <div>
-    {
-      projectEntries.map(([year, projects]) => (
-        <div>
-          <p class="font-bold my-8 text-2xl">{year}</p>
-          <div class="flex flex-wrap gap-4 justify-center">
-            {projects.map((project) => (
-              <PreviewCard
-                thumbnailSrc={`/projects/${project.slug}/${project.data.thumbnail}`}
-                thumbnailAlt={project.data.thumbnailAlt}
-                href={
-                  project.data.blogUrl ||
-                  project.data.previewUrl ||
-                  project.data.githubUrl ||
-                  '#'
-                }
+<Layout title="Projects — Luke Batchelor">
+  <div class="space-y-8">
+    <div class="space-y-4">
+      <h1 class="text-3xl font-semibold">Projects</h1>
+      <TagNav tags={allTags} />
+      <input
+        id="project-search"
+        type="search"
+        placeholder="Search projects…"
+        autocomplete="off"
+        class="w-full max-w-sm bg-surface border border-border rounded-lg px-4 py-2 text-sm text-text placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
+      />
+    </div>
+
+    <div class="space-y-10">
+      {years.map(year => (
+        <section data-year={year}>
+          <h2 class="text-sm font-semibold text-text-muted uppercase tracking-widest mb-4">{year}</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {byYear[year]!.map(project => (
+              <ProjectCard
                 title={project.data.title}
                 description={project.data.description}
+                thumbnail={project.data.thumbnail}
+                thumbnailAlt={project.data.thumbnailAlt}
+                tags={project.data.tags}
+                previewUrl={project.data.previewUrl}
+                githubUrl={project.data.githubUrl}
+                blogUrl={project.data.blogUrl}
               />
             ))}
           </div>
-        </div>
-      ))
-    }
+        </section>
+      ))}
+    </div>
+
+    <p id="no-results" class="hidden text-text-muted text-sm">No projects matched your search.</p>
   </div>
-  <!-- {projects.map((project) => <pre>{JSON.stringify(project, null, 2)}</pre>)} -->
 </Layout>
+
+<script>
+  const input = document.getElementById('project-search') as HTMLInputElement;
+  const sections = document.querySelectorAll<HTMLElement>('[data-year]');
+  const noResults = document.getElementById('no-results')!;
+
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase().trim();
+    let totalVisible = 0;
+
+    sections.forEach(section => {
+      const cards = section.querySelectorAll<HTMLElement>('[data-search]');
+      let sectionVisible = 0;
+      cards.forEach(card => {
+        const matches = !q || card.dataset.search!.includes(q);
+        card.style.display = matches ? '' : 'none';
+        if (matches) sectionVisible++;
+      });
+      section.style.display = sectionVisible > 0 ? '' : 'none';
+      totalVisible += sectionVisible;
+    });
+
+    noResults.classList.toggle('hidden', totalVisible > 0);
+  });
+</script>

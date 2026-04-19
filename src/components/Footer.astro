@@ -1,13 +1,9 @@
-<footer class="text-center text-xs p-4 bg-slate-600 text-gray-200">
-  <p>
-    Built with <span class="text-red-500">♥</span> using <a href="astro.build"
-      >Astro</a
-    >, deployed on <a href="https://netlify.com/"> Netlify.</a>
-  </p>
-  <p>
-    View the source or report bugs on <a
-      href="https://github.com/lukebatchelor/lukebatchelor-net">Github.</a
-    >
-  </p>
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border mt-auto">
+  <div class="max-w-4xl mx-auto px-6 py-6 text-center text-sm text-text-muted">
+    &copy; {year} Luke Batchelor
+  </div>
 </footer>
-<style></style>

@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  thumbnail: ImageMetadata;
+  thumbnailAlt: string;
+  tags: string[];
+  previewUrl?: string;
+  githubUrl?: string;
+  blogUrl?: string;
+}
+
+const { title, description, thumbnail, thumbnailAlt, tags, previewUrl, githubUrl, blogUrl } = Astro.props;
+---
+
+<article
+  class="bg-surface rounded-lg overflow-hidden border border-border flex flex-col transition-colors hover:border-text-muted group"
+  data-search={[title, description, ...tags].join(' ').toLowerCase()}
+>
+  <div class="aspect-video overflow-hidden bg-surface-2">
+    <Image
+      src={thumbnail}
+      alt={thumbnailAlt || title}
+      width={640}
+      height={360}
+      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+  </div>
+
+  <div class="p-4 flex flex-col gap-3 flex-1">
+    <h2 class="font-semibold text-lg leading-tight">{title}</h2>
+    <p class="text-text-muted text-sm flex-1">{description}</p>
+
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-1.5">
+        {tags.map(tag => (
+          <a
+            href={`/projects/tag/${tag}`}
+            class="text-xs px-2 py-0.5 rounded-full bg-surface-2 text-text-muted hover:text-accent transition-colors"
+          >
+            {tag}
+          </a>
+        ))}
+      </div>
+    )}
+
+    {(previewUrl || githubUrl || blogUrl) && (
+      <div class="flex gap-3 pt-1">
+        {previewUrl && (
+          <a href={previewUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:underline">
+            Live ↗
+          </a>
+        )}
+        {githubUrl && (
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-text-muted hover:text-text transition-colors">
+            GitHub ↗
+          </a>
+        )}
+        {blogUrl && (
+          <a href={blogUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-text-muted hover:text-text transition-colors">
+            Blog ↗
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</article>

@@ -1,0 +1,17 @@
+@theme {
+  /* Backgrounds */
+  --color-bg:         oklch(14% 0.02 60);
+  --color-surface:    oklch(20% 0.03 60);
+  --color-surface-2:  oklch(25% 0.03 60);
+
+  /* Text */
+  --color-text:       oklch(88% 0.02 80);
+  --color-text-muted: oklch(60% 0.02 80);
+
+  /* Accent */
+  --color-accent:     oklch(62% 0.14 50);
+  --color-accent-2:   oklch(70% 0.10 200);
+
+  /* Borders */
+  --color-border:     oklch(30% 0.03 60);
+}
