@@ -62,7 +62,7 @@ async function main() {
   const slug = slugify(title);
   const dirName = `${date}-${slug}`;
   const dirPath = path.join('src', 'content', 'projects', dirName);
-  const filePath = path.join(dirPath, 'index.mdx');
+  const filePath = path.join(dirPath, slug, '.mdx');
 
   if (fs.existsSync(dirPath)) {
     console.error(`Error: ${dirPath} already exists`);
