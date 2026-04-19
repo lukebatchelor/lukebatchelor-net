@@ -10,9 +10,10 @@ interface Props {
   previewUrl?: string;
   githubUrl?: string;
   blogUrl?: string;
+  thumbnailPosition?: string;
 }
 
-const { title, description, thumbnail, thumbnailAlt, tags, previewUrl, githubUrl, blogUrl } = Astro.props;
+const { title, description, thumbnail, thumbnailAlt, tags, previewUrl, githubUrl, blogUrl, thumbnailPosition = 'center' } = Astro.props;
 ---
 
 <article
@@ -24,8 +25,8 @@ const { title, description, thumbnail, thumbnailAlt, tags, previewUrl, githubUrl
       src={thumbnail}
       alt={thumbnailAlt || title}
       width={640}
-      height={360}
       class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      style={`object-position: ${thumbnailPosition}`}
     />
   </div>
 

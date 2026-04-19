@@ -20,6 +20,7 @@ const projects = defineCollection({
       previewUrl: z.string().optional(),
       githubUrl: z.string().optional(),
       blogUrl: z.string().optional(),
+      thumbnailPosition: z.string().optional(),
     }),
 });
 
